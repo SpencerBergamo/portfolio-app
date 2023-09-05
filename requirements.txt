@@ -1,0 +1,11 @@
+flask_wtf 
+wtforms
+flask
+flask_debugtoolbar
+email_validator
+psycopg2
+sqlalchemy
+flask_bcrypt
+flask_sqlalchemy
+flask_mail
+requests

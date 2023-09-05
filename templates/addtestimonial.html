@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="form-header">
+    <h1>Tell me how I did!</h1>
+</div>
+
+<div class="review-card">
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            {{ form.name(placeholder="Who's leaving this review?", class="form-control") }}
+            {% for error in form.name.errors %}
+            <span class="text-danger">{{error}}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.testimonial(placeholder="What did you think of my work?", class="form-control", id="testimonial-input") }}
+            {% for error in form.testimonial.errors %}
+            <span class="text-danger">{{error}}</span>
+            {% endfor %}
+            <p><sub><span id="word-count">0</span> / 1000</sub></p>
+        </div>
+
+        <div class="star-container">
+            <div class="stars" id="star-rating">
+                <span class="star_r fa fa-star" data-rating="1"></span>
+                <span class="star_r fa fa-star" data-rating="2"></span>
+                <span class="star_r fa fa-star" data-rating="3"></span>
+                <span class="star_r fa fa-star" data-rating="4"></span>
+                <span class="star_r fa fa-star" data-rating="5"></span>
+            </div>
+            <input type="hidden" id="rating" name="rating" value="0">
+        </div>
+
+        <div class="button-container">
+            <button class="btn btn-danger" type="button" id="cancel">Cancel</button>
+            <button class="btn btn-primary" type="submit">Comment</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

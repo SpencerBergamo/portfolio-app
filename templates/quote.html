@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="form-header">
+    <h1>Tell me how I did!</h1>
+</div>
+
+<div class="review-card">
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            {{ form.name(placeholder="What's your name?", class="form-control") }}
+            {% for error in form.name.errors %}
+            <span class="text-danger">{{error}}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.organization(placeholder="What organization are you with?", class="form-control") }}
+            {% for error in form.organization.errors %}
+            <span class="text-danger">{{error}}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.email(placeholder="What's your email?", class="form-control") }}
+            {% for error in form.email.errors %}
+            <span class="text-danger">{{error}}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.phone(placeholder="Contact Phone Number", class="form-control") }}
+            {% for error in form.phone.errors %}
+            <span class="text-danger">{{error}}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.hosting(placeholder="Do you already have a domain or hosting provider?", class="form-control") }}
+            {% for error in form.hosting.errors %}
+            <span class="text-danger">{{error}}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.description(placeholder="What do you need built?", class="form-control") }}
+            {% for error in form.description.errors %}
+            <span class="text-danger">{{error}}</span>
+            {% endfor %}
+        </div>
+
+        <div class="button-container">
+            <button class="btn btn-danger" type="button" id="cancel">Cancel</button>
+            <button class="btn btn-primary" type="submit">Comment</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

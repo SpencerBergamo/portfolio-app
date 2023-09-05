@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block content %}
+{% if g.user %}
+<div>
+    <h1>Stage Testimonials</h1>
+    <ul>
+        {% for testimonial in stage_testimonials %}
+        <li>{{ testimonial.name }} - {{ testimonial.testimonial }}
+            {% for i in range(testimonial.rating) %}
+            <span class="fa fa-star" style="color:gold"></span>
+            {% endfor %}
+
+            <!-- Add a button or form to push this testimonial -->
+            <form method="POST" action="/push-testimonials/{{ testimonial.id }}">
+                <button type="submit">Push to Push Testimonials</button>
+            </form>
+            <button class="delete-stage btn btn-danger" data-review-id="{{ testimonial.id }}" >DELETE</button>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h1>Published Testimonials</h1>
+    <ul>
+        {% for testimonial in push_testimonials %}
+        <li>{{ testimonial.name }} - {{ testimonial.testimonial }}
+            {% for i in range(testimonial.rating) %}
+            <span class="fa fa-star" style="color:gold"></span>
+            {% endfor %}
+        </li>
+        <button class="delete-push btn btn-danger" data-review-id="{{ testimonial.id }}" >DELETE</button>
+        {% endfor %}
+    </ul>
+
+    <a href="/logout">Go Home</a>
+</div>
+{% endif %}
+
+{% endblock %}
