@@ -8,3 +8,4 @@ sqlalchemy
 flask_bcrypt
 flask_sqlalchemy
 gunicorn
+flask_mail
