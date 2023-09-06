@@ -20,7 +20,7 @@ mail = Mail(app)
 port = int(os.environ.get("PORT", 5000))
 
 SLACK_WEBHOOK = 'https://hooks.slack.com/services/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'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgres://portfolio_postgres_user:5QHDRFmx2b1HCKXcCzVhsLMBKgagk0DQ@dpg-cjs94rdm702s73febli0-a.oregon-postgres.render.com/portfolio_postgres')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql://sihgxuqzqokubx:46792bd6c3fddba482b51ac9eea5c4a380df8c53bcdb87b842adbe7fa3780dce@ec2-3-218-172-130.compute-1.amazonaws.com:5432/d18lumgvm46oje')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'myportfolio')
