@@ -14,7 +14,7 @@ import requests
 
 CURR_USER_KEY = "curr_user"
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static', static_folder='static')
 mail = Mail(app)
 
 SLACK_WEBHOOK = 'https://hooks.slack.com/services/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'
