@@ -17,9 +17,11 @@ CURR_USER_KEY = "curr_user"
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 mail = Mail(app)
 
+port = int(os.environ.get("PORT", 8000))
+
 SLACK_WEBHOOK = 'https://hooks.slack.com/services/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'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///portfolio'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://bqwfrnopesyuza:212665129e33b0ade53583e081e4a5f76242e2b5e5fe55a68c9c72cc9997e717@ec2-34-236-103-63.compute-1.amazonaws.com:5432/delrca2o6gcvea'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql:///portfolio')
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgres://bqwfrnopesyuza:212665129e33b0ade53583e081e4a5f76242e2b5e5fe55a68c9c72cc9997e717@ec2-34-236-103-63.compute-1.amazonaws.com:5432/delrca2o6gcvea')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'myportfolio')
@@ -167,4 +169,4 @@ def quote_send(message):
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-        app.run(debug=True, port=8000)
+        app.run(debug=False, port=port)
