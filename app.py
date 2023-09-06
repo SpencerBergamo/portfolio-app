@@ -46,10 +46,10 @@ def do_logout():
         del session[CURR_USER_KEY]
 
 # User first route
-@app.route('/')
-def route():
+# @app.route('/')
+# def route():
 
-    return redirect('/homepage')
+#     return redirect('/homepage')
 
 @app.route('/homepage')
 def homepage():
