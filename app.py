@@ -17,7 +17,7 @@ CURR_USER_KEY = "curr_user"
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 mail = Mail(app)
 
-port = int(os.environ.get("PORT", 8000))
+port = int(os.environ.get("PORT", 5000))
 
 SLACK_WEBHOOK = 'https://hooks.slack.com/services/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'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql:///portfolio')
