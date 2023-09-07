@@ -62,10 +62,14 @@ def root():
     return redirect('/homepage')
 
 
-@app.route('/homepage', methods=['GET', 'POST'])
-def homepage():
-    push_testimonials = pushTestimonial.query.all()
-    return render_template('/homepage.html', pushTestimonial=push_testimonials)
+# @app.route('/homepage', methods=['GET', 'POST'])
+# def homepage():
+#     push_testimonials = pushTestimonial.query.all()
+#     return render_template('/homepage.html', pushTestimonial=push_testimonials)
+
+@app.route('/homepage')
+def homepage(): 
+    return render_template('/homepage.html')
 
 @app.route('/logout') 
 def logout():
