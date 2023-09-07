@@ -29,8 +29,8 @@ def get_database_url() -> str:
 
 
 SLACK_WEBHOOK = 'https://hooks.slack.com/services/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'
-# app.config['SQLALCHEMY_DATABASE_URI'] = get_database_url()
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql:///portfolio')
+app.config['SQLALCHEMY_DATABASE_URI'] = get_database_url()
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql:///portfolio')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'myportfolio')
@@ -66,7 +66,7 @@ def root():
 @app.route('/homepage')
 def homepage():
     push_testimonials = pushTestimonial.query.all()
-    return render_template('/homepage.html', push_testimonials=push_testimonials)
+    return render_template('/homepage.html', pushTestimonial=push_testimonials)
 
 @app.route('/logout') 
 def logout():
@@ -155,6 +155,8 @@ def quote_form():
         slack_message = f"New Quote:\nName: {name}\nOrganization: {organization}\nEmail: {email}\nPhone: {phone}\nHosting: {hosting}\nDescription: {description}"
 
         quote_send(slack_message)
+
+        flash("Your quote has been sent, we will get back to you soon!", "success")
 
         return redirect('/homepage')
     
