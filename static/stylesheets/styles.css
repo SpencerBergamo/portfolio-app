@@ -225,7 +225,13 @@ body {
     text-align: center;
     font-size: 1.5rem;
 }
-
+.socials {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid red; */
+}
 .socials>a {
     margin: 1.5rem;
     color: blue;
@@ -376,8 +382,11 @@ footer {
 
 
 @media screen and (max-width: 1210px) {
+    body{
+        width: 100%;
+    }
     .mainpage {
-        max-width: 80%;
+        max-width: 90%;
         margin-left: auto;
         margin-right: auto;
     }
@@ -386,9 +395,33 @@ footer {
         flex-direction: column;
     }
 
+    .profile {
+        border-top-right-radius: 2rem;
+    }
+
     * {
         padding: 0;
         font-size: 1rem;
+    }
+
+    .center-navbar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* border: 2px solid red; */
+    }
+
+    .work-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* border: 2px solid red; */
+    }
+    .header > img {
+        width: 20%;
+        height: 20%;
+        margin: 0;
     }
 
     /* .bio {
