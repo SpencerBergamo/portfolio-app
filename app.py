@@ -19,8 +19,17 @@ mail = Mail(app)
 
 port = int(os.environ.get("PORT", 5000))
 
+def get_database_url() -> str:
+    """Get database URL from environment variable or config file."""
+    try:
+        return os.environ["DATABASE_URL"].replace("://", "ql://", 1)
+    except AttributeError:
+        print("No environment variable 'DATABASE_URL' found. Using config file.")
+    return "postgresql:///sihgxuqzqokubx:46792bd6c3fddba482b51ac9eea5c4a380df8c53bcdb87b842adbe7fa3780dce@ec2-3-218-172-130.compute-1.amazonaws.com:5432/d18lumgvm46oje"
+
+
 SLACK_WEBHOOK = 'https://hooks.slack.com/services/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'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql://sihgxuqzqokubx:46792bd6c3fddba482b51ac9eea5c4a380df8c53bcdb87b842adbe7fa3780dce@ec2-3-218-172-130.compute-1.amazonaws.com:5432/d18lumgvm46oje')
+app.config['SQLALCHEMY_DATABASE_URI'] = get_database_url()
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'myportfolio')
