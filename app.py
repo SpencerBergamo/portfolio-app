@@ -1,6 +1,5 @@
 import os
 from flask import Flask, render_template, request, flash, redirect, session, g, jsonify
-from flask_migrate import Migrate
 from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
 from forms import UserLoginForm, AddTestimonialForm, QuoteForm
@@ -18,8 +17,6 @@ CURR_USER_KEY = "curr_user"
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 
 port = int(os.environ.get("PORT", 5000))
-
-migrate = Migrate(app, db)
 
 def get_database_url() -> str:
     """Get database URL from environment variable or config file."""
