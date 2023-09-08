@@ -15,7 +15,6 @@ import requests
 CURR_USER_KEY = "curr_user"
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
-
 port = int(os.environ.get("PORT", 5000))
 
 def get_database_url() -> str:
@@ -30,7 +29,6 @@ def get_database_url() -> str:
 SLACK_WEBHOOK = 'https://hooks.slack.com/services/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'
 app.config['SQLALCHEMY_DATABASE_URI'] = get_database_url()
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql:///portfolio')
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql:///portfolio-test')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'myportfolio')
