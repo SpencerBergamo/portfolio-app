@@ -26,7 +26,7 @@ def get_database_url() -> str:
     return "postgres:///sihgxuqzqokubx:46792bd6c3fddba482b51ac9eea5c4a380df8c53bcdb87b842adbe7fa3780dce@ec2-3-218-172-130.compute-1.amazonaws.com:5432/d18lumgvm46oje"
 
 
-SLACK_WEBHOOK = 'https://hooks.slack.com/services/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'
+SLACK_WEBHOOK = 'https://hooks.slack.com/services/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'
 app.config['SQLALCHEMY_DATABASE_URI'] = get_database_url()
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql:///portfolio')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -166,7 +166,7 @@ def quote_form():
 
         quote_send(slack_message)
 
-        flash("Your quote has been sent, we will get back to you soon!", "success")
+        flash("Your quote has been sent, I will get back to you soon!", "success")
 
         return redirect('/homepage')
     
