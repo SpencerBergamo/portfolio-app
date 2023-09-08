@@ -56,24 +56,12 @@ def do_logout():
 # User first route
 @app.route('/')
 def root():
-
     return redirect('/homepage')
 
-
-@app.route('/homepage', methods=['GET', 'POST'])
+@app.route('/homepage')
 def homepage():
     push_testimonials = pushTestimonial.query.all()
-    return render_template('/homepage.html', pushTestimonial=push_testimonials)
-
-# @app.route('/homepage')
-# def homepage(): 
-#     return render_template('/homepage.html')
-
-@app.route('/logout') 
-def logout():
-    do_logout()
-    # flash("You have successfully logged out", "success")
-    return redirect('/homepage')
+    return render_template('/homepage.html', push_testimonials=push_testimonials)
 
 @app.route('/admin-signup', methods=['GET', 'POST'])
 def admin_signup():
@@ -105,6 +93,11 @@ def admin_signin():
             return redirect('/stage-testimonials')
         # flash("Invalid credentials.", 'danger')
     return render_template('adminlogin.html', form=form)
+
+@app.route('/logout') 
+def logout():
+    do_logout()
+    return redirect('/homepage')
 
 # Testimonials
 @app.route('/add_testimonial', methods=['GET', 'POST'])
