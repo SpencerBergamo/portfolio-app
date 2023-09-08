@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, request, flash, redirect, session, g, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
-from forms import UserLoginForm, AddTestimonialForm, QuoteForm
+from forms import AdminSignup, UserLoginForm, AddTestimonialForm, QuoteForm
 from models import db, connect_db, User, stageTestimonial, pushTestimonial
 from flask_mail import Mail, Message
 import requests
@@ -75,6 +75,22 @@ def logout():
     # flash("You have successfully logged out", "success")
     return redirect('/homepage')
 
+@app.route('/admin-signup', methods=['GET', 'POST'])
+def admin_signup():
+    form = AdminSignup()
+    if form.validate_on_submit():
+        try:
+            user = User.signup(
+                username=form.username.data, 
+                password=form.password.data)
+            db.session.commit()
+        except IntegrityError:
+            # flash("Username already taken", 'danger')
+            return render_template('adminsignup.html', form=form)
+        do_login(user)
+        # flash(f"Hello, {user.username}!", "success")
+        return redirect('/stage-testimonials')
+    return render_template('signup.html', form=form)
 
 @app.route('/admin-signin', methods=['GET', 'POST'])
 def admin_signin():

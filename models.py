@@ -12,6 +12,13 @@ class User(db.Model):
     password = db.Column(db.Text, nullable=False)
 
     @classmethod
+    def signup(cls, username, password):
+        hashed_pwd = bcrypt.generate_password_hash(password).decode('UTF-8')
+        user = User(username=username, password=hashed_pwd)
+        db.session.add(user)
+        return user
+
+    @classmethod
     def authenticate(cls, username, password):
         user = User.query.filter_by(username=username).first()
         if user and bcrypt.check_password_hash(user.password, password):
