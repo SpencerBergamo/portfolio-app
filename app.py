@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request, flash, redirect, session, g, jsonify
+from flask_migrate import Migrate
 from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
 from forms import UserLoginForm, AddTestimonialForm, QuoteForm
@@ -15,9 +16,10 @@ import requests
 CURR_USER_KEY = "curr_user"
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
-mail = Mail(app)
 
 port = int(os.environ.get("PORT", 5000))
+
+migrate = Migrate(app, db)
 
 def get_database_url() -> str:
     """Get database URL from environment variable or config file."""
@@ -31,6 +33,7 @@ def get_database_url() -> str:
 SLACK_WEBHOOK = 'https://hooks.slack.com/services/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'
 app.config['SQLALCHEMY_DATABASE_URI'] = get_database_url()
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql:///portfolio')
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql:///portfolio-test')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'myportfolio')
@@ -62,14 +65,14 @@ def root():
     return redirect('/homepage')
 
 
-# @app.route('/homepage', methods=['GET', 'POST'])
-# def homepage():
-#     push_testimonials = pushTestimonial.query.all()
-#     return render_template('/homepage.html', pushTestimonial=push_testimonials)
+@app.route('/homepage', methods=['GET', 'POST'])
+def homepage():
+    push_testimonials = pushTestimonial.query.all()
+    return render_template('/homepage.html', pushTestimonial=push_testimonials)
 
-@app.route('/homepage')
-def homepage(): 
-    return render_template('/homepage.html')
+# @app.route('/homepage')
+# def homepage(): 
+#     return render_template('/homepage.html')
 
 @app.route('/logout') 
 def logout():
