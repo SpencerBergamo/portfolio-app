@@ -2,57 +2,74 @@ body {
     padding-bottom: 40px;
     height: auto;
     background-image: url('/static/images/bkg-blur.png');
-    /* background-color: rgba(145, 145, 145, 0.5); */
+    background-color: rgba(255, 255, 255, 0.8);
     background-size: cover;
+}
+
+button {
+    cursor: pointer;
+    background-color: #6C4CE8;
+}
+button:hover{
+    background-color: #6BD0FF;
 }
 
 .hidden {
     display: none;
 }
 
+/* Universal Cards */
+.card {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    align-items: center;
+    background-color: white;
+    margin: 0.4rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Top Universal Navigation Bar */
+.navbar {
+    margin: 1rem;
+    padding: 1rem;
+    /* width: 100%; */
+    height: 4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    /* background-color: white; */
+    /* border: 2px solid red; */
+}
+/* .navbar > img {
+    padding: 1rem;
+} */
+/* .navbar-right>button {
+    margin: 1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 2rem;
+    background-color: #6BD0FF;
+    color: white;
+} */
 
 .mainpage {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    /* border: 2px solid red; */
 }
 
-.mainpage-container {
+.body-container {
     background: rgba(255, 255, 255, 0.8);
-    /* opacity: 08; */
     border-radius: 2rem;
     max-width: 1440px;
     height: auto;
-
     margin: 1rem;
-
-    /* border: 2px solid red; */
-}
-
-/* Top Universal Navigation Bar */
-.navbar {
-    padding: 0, 0, 0, 0;
-    margin: 1rem;
-    /* border: 2px solid red; */
-}
-
-.navbar-left {
-    margin-left: 2.5rem;
-}
-
-.navbar-right {
-    margin-right: 2.5rem;
-}
-
-.navbar-right>button {
-    /* margin: 1rem; */
-    font-size: 1.3rem;
-    font-weight: bold;
-    border-radius: 2rem;
-    background-color: #6BD0FF;
-    color: white;
 }
 
 /* Body Section of page */
@@ -62,23 +79,7 @@ body {
     justify-content: space-between;
     align-items: top;
     margin: 1rem;
-    margin-top: 4rem;
-}
-
-/* Universal Cards */
-.card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    margin: 0.4rem;
-    padding: 2rem;
-    border-radius: 0.8rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-
-    /* padding: 2rem; */
-    /* border: 2px solid red; */
+    /* margin-top: 4rem; */
 }
 
 /* Form Container for any forms in center of page */
@@ -242,7 +243,7 @@ body {
     font-size: 1.3rem;
     font-weight: bold;
     border-radius: 2rem;
-    background-color: #6BD0FF;
+    background-color: #6C4CE8;
     color: white;
 }
 
@@ -264,8 +265,8 @@ body {
 .header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: left;
+    justify-content: center;
+    align-items: center;
     padding: 1rem;
 }
 
@@ -398,10 +399,14 @@ footer {
     .profile {
         border-top-right-radius: 2rem;
     }
+    .profile > img {
+        width: 50%;
+        height: auto;
+    }
 
-    * {
-        padding: 0;
-        font-size: 1rem;
+    .card {
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
 
     .center-navbar {
@@ -424,24 +429,7 @@ footer {
         margin: 0;
     }
 
-    /* .bio {
-        font-size: 1.5rem;
-        text-align: center;
-    } */
+    .description{
+        display: none;
+    }
 }
-
-/* @media screen and (min-width: 800px) {
-    
-    .mainpage{
-        max-width: 70%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .navbar{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        border: 2px solid red;
-    }
-} */

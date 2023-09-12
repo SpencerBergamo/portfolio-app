@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const msg = document.getElementById("email-btn");
+    const emailBtn = document.getElementById("email-btn");
+    const msgBtn = document.getElementById("msagge-btn");
     const cancel = document.getElementById("cancel");
     const ratingInput = document.getElementById("rating");
     const stars = $(".star_r");
@@ -9,12 +10,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const reviewQuotes = $(".review-quote");
     const deleteStage = $(".delete-stage");
     const deletePush = $(".delete-push");
-    const requestQuote = document.getElementById("quote");
+    const messageMe = document.getElementById("quote");
 
 
-    if (msg) {
-        msg.addEventListener("click", function () {
+    if (emailBtn) {
+        emailBtn.addEventListener("click", function () {
             window.location.href = "mailto:bergamospencer@gmail.com";
+        });
+    }
+
+    if (msgBtn) {
+        msgBtn.addEventListener("click", function () {
+            window.location.href = "sms:1-415-361-9923";
         });
     }
 
